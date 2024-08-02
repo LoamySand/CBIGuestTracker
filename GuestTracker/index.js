@@ -1,19 +1,14 @@
-const fs = require('fs');
-const path = require('path');
 const jsqr = require('jsqr');
-const exifParser = require('exif-parser');
-const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.querySelector('#csvForm');
   const csvFileInput = document.querySelector('#csvInput');
-  const textArea = document.querySelector('#csvResult');
 
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
     const files = csvFileInput.files;
     if (files.length === 0) {
-      textArea.value = 'No files selected.';
+      alert('No files selected.');
       return;
     }
 
@@ -29,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    textArea.value = formatCSV(records);
+    downloadCSV(records);
   });
 });
 
@@ -68,6 +63,18 @@ const extractDateTime = (file) => {
 
 const formatCSV = (records) => {
   const header = 'Filename,QR Code Content,Date/Time\n';
-  const rows = records.map(record => `${record.filename},${record.content},${record.datetime}`).join('\n');
+  const rows = records.map(record => `"${record.filename}","${record.content}","${record.datetime}"`).join('\n');
   return header + rows;
+};
+
+const downloadCSV = (records) => {
+  const csvContent = formatCSV(records);
+  const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = 'qr_codes.csv';
+  document.body.appendChild(link); // Required for Firefox
+  link.click();
+  document.body.removeChild(link); // Clean up
 };
