@@ -3,16 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QR Code Reader</title>
+  <link rel="stylesheet" href="styles.css">
+  <title>Guest Check In</title>
 </head>
 <body>
   <h1>QR Code Reader</h1>
   <form id="csvForm">
-    <input type="file" id="csvInput" multiple accept=".png, .jpg, .jpeg">
-    <button type="submit">Process Files</button>
+    <div class="box">
+      <input type="file" id="csvInput" multiple accept=".png, .jpg, .jpeg">
+      <input id="submit-button" type="submit" value="Download" />
+    </div>
   </form>
-  <textarea id="csvResult" rows="20" cols="80"></textarea>
-
+  
   <script src="bundle.js"></script>
 </body>
 </html>

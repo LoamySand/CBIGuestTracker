@@ -1,0 +1,45 @@
+body {
+    font-family: sans-serif;
+    padding: 1rem;
+    background: #ccc;
+    font-size: x-large;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    margin-bottom: 1rem;
+    align-items: center;
+    padding: 1rem;
+  }
+  
+  
+  .box {
+    background-color: white;
+    padding: 3rem 5rem 1rem 5rem;
+    border-radius: 6px;
+  }
+
+  
+  #csvInput{
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  #submit-button{
+    border-radius:4px;
+    background-color: #04AA6D; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: left;
+    text-decoration: none;
+    float:inline-end;
+    font-size: 16px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    margin-top: 2rem;
+    margin-bottom: 0rem;
+    margin: 2rem 0rem 1rem 0rem;
+  }
